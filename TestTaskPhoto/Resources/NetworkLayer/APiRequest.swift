@@ -11,6 +11,7 @@ enum ApiType {
     case getUsers
     case getAlbums
     case getPhotos
+    case getUsersPhoto
     
     var baseURL: URL {
         return URL(string: "https://jsonplaceholder.typicode.com/")!
@@ -18,8 +19,6 @@ enum ApiType {
     
     var heders: [String:String] {
         switch self {
-        case .getPhotos:
-            return ["albumsId": "1"]
         default:
             return [:]
         }
@@ -30,6 +29,7 @@ enum ApiType {
         case .getUsers: return "users"
         case .getAlbums: return "albums"
         case .getPhotos: return "photos"
+        case .getUsersPhoto: return ""
         }
     }
 
@@ -45,3 +45,5 @@ enum ApiType {
         }
     }
 }
+
+
