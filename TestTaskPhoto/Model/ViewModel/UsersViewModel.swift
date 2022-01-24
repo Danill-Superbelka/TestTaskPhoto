@@ -3,7 +3,6 @@
 //  TestTaskPhoto
 //
 //  Created by Даниил  on 22.01.2022.
-//
 
 import Foundation
 

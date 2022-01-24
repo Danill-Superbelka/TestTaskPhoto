@@ -10,7 +10,7 @@ import UIKit
 class UsersTableViewController: UITableViewController {
     
     private var userViewModel: UsersViewModel?
-    var users: Users = [User]()
+    private var users: Users = [User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +26,13 @@ class UsersTableViewController: UITableViewController {
         }
     }
         
-    // MARK: - Table view data source
+// MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        users.count != 0 ? users.count:1
+        users.count != 0 ? users.count:0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,6 +46,7 @@ class UsersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = users[indexPath.row].id
        
+//Создание запроса для получения списка всех альбомов пользователя
         var urlComps = URLComponents(string: "\(ApiType.getAlbums.request)")
         let queryItems = [URLQueryItem(name: "userId", value: "\(user)")]
         urlComps?.queryItems = queryItems
@@ -57,6 +58,7 @@ class UsersTableViewController: UITableViewController {
             let firstAlbum = "\(String(describing: data?.first?.id ?? 0))"
             let lastAlbum =  "\(String(describing: data?.last?.id ?? 0))"
             
+//Создание запроса для получения фотографий из альбомов пользователя
             var urlComps = URLComponents(string: "\(ApiType.getPhotos.request)")
             let queryItems = [URLQueryItem(name: "albumId_gte", value: firstAlbum), URLQueryItem(name: "albumId_lte", value: lastAlbum)]
             urlComps?.queryItems = queryItems

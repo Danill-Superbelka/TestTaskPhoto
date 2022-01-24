@@ -13,5 +13,4 @@ struct User: Codable {
     let name: String
 }
 
-
 typealias Users = [User]
