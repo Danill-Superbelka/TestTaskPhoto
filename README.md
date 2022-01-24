@@ -1,5 +1,5 @@
 # TestTaskPhoto
- Test task for Gora-Studio
+ Test task
  
 Написать приложение, которое отображает фотографии каждого выбранного пользователя
 без использования библиотек для https://jsonplaceholder.typicode.com.
